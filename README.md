@@ -30,7 +30,7 @@ The 'outputs_dir' should point to the folder which 4 sub-folders do not exist!
 
 ## Troubleshooting  
 Q. ImportError --> undefined symbol: PyCObject_Type  
-A. Remember to Disable ROS environment setpu.bash   
+A. Remember to Disable ROS environment setup.bash   
 
 ## Developer  
 * Hao-Chih Lin (hlin@ethz.ch)  
