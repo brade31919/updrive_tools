@@ -1,0 +1,8 @@
+*.pyc
+*.ckpt
+*.index
+*.meta
+*.tar
+*.png
+*.jpg
+.idea/
