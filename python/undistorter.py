@@ -53,7 +53,7 @@ def camera_matrix(calibration_dict, camera_index, output_scale):
 # @param image_path: the file path for the distorted image
 # @param camera_model: the list of calibration parameters [K, D, xi, K_scaled]
 # @return undistorted image (None for internal errors)
-def undistort(image_path, camera_model):
+def undistort(image_path, camera_model, verbose=False):
     # Check calibration parameters
     if len(camera_model) != 4:
         print("[Error] Wrong calibration parameters (total size)!")
@@ -78,8 +78,8 @@ def undistort(image_path, camera_model):
     map1, map2	=	cv2.omnidir.initUndistortRectifyMap(K, D, xi, np.eye(3), K_scaled, (image.shape[1], image.shape[0]), cv2.CV_16SC2, cv2.omnidir.RECTIFY_PERSPECTIVE)
     undistorted_image = cv2.remap(image, map1, map2, interpolation=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT)
 
-    # Debug
-    print("\t Finish processing image %s"%(os.path.basename(image_path)))
+    if verbose:
+        print("\t Finish processing image %s"%(os.path.basename(image_path)))
     
     return undistorted_image
 
@@ -166,7 +166,7 @@ def main():
                 if file.endswith(".png"):
                     image_full_path = subfolder_directory + '/' + file
                     images_list.append(image_full_path)
-                    undistorted_image = undistort(image_full_path, camera_model)
+                    undistorted_image = undistort(image_full_path, camera_model, verbose=verbose)
                     if undistorted_image is None:
                         print("[WARN] Pass the image with undistortion process fail: " + file)
                     else:
