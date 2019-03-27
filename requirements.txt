@@ -4,3 +4,5 @@ opencv-python==3.4.1.15
 opencv-contrib-python==3.4.1.15
 scipy
 ipdb
+pptk==0.1.0
+plyfile==0.7
