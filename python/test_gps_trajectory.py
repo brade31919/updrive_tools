@@ -4,6 +4,9 @@ from utils.preprocessing import read_filenames
 import pandas
 import pickle
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
 
 
 # Read in gps file and parse it to numpy array
